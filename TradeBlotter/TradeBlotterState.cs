@@ -1,4 +1,6 @@
-﻿namespace TradeBlotter;
+﻿using TradeBlotter.Services;
+
+namespace TradeBlotter;
 
 public class TradeBlotterState
 {
@@ -9,8 +11,10 @@ public class TradeBlotterState
 
     private TradeBlotterState()
     {
-        
+        InstrumentService = new();
+        TradeService = new TradeService(InstrumentService);
     }
     
-    
+    public InstrumentService InstrumentService { get; }
+    public TradeService TradeService { get; }
 }
